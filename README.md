@@ -1,16 +1,23 @@
+# Agentic-GameAI-i9
+
+An LLM agent that learns to play games of increasing difficulty. Each tier adds one new hard problem: perception, planning, timing, memory, and opponents. The shared code in `core/` stays the same across tiers.
+
+## Project Structure
+
+```text
 Agentic-GameAI-i9/
-├── .env                      
-├── .gitignore                
-├── requirements.txt          
+├── .env
+├── .gitignore
+├── requirements.txt
 ├── README.md
 │
 ├── core/                     # code shared by every tier
-│   ├── __init__.py           
-│   ├── llm.py                
-│   └── logger.py             
+│   ├── __init__.py
+│   ├── llm.py
+│   └── logger.py
 │
 ├── envs/                     # one file per game
-│   ├── __init__.py           
+│   ├── __init__.py
 │   ├── frozenlake.py         (Tier 0)
 │   ├── game2048.py           (Tier 1)
 │   ├── sokoban.py            (Tier 2)
@@ -18,19 +25,45 @@ Agentic-GameAI-i9/
 │   └── pokemon.py            (Tier 4)
 │
 ├── tiers/                    # one runnable script per tier
-│   ├── __init__.py           
-│   ├── tier0_frozenlake.py   
+│   ├── __init__.py
+│   ├── tier0_frozenlake.py
 │   ├── tier1_2048.py
 │   └── ...
 │
 ├── memory/                   # Tier 4 only: notes, database
-└── logs/                     
+└── logs/                     # one .jsonl file per run
+```
 
+## Setup
 
+```bash
+python -m venv venv
+venv\Scripts\activate          # Windows
+# source venv/bin/activate     # Mac/Linux
+pip install -r requirements.txt
+```
+
+Create a `.env` file with your free LLM provider settings:
+
+```text
+LLM_API_KEY=your_key_here
+LLM_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai/
+LLM_MODEL=gemini-2.5-flash
+```
+
+## Run
+
+From the project root:
+
+```bash
+python -m tiers.tier0_frozenlake
+```
+
+Each run saves every step (prompt, reply, action, reward) to a file in `logs/`.
 
 ## Tier 0 — Sanity check (week 1, prove the loop works)
 
-**Game: FrozenLake** (built into Gymnasium, zero setup)
+**Game: FrozenLake** (built into Gymnasium, zero setup)
 
 - Tiny grid, discrete actions, deterministic-ish rules
 - Goal here isn't a good agent — it's proving your perception → LLM decision → action loop actually runs end to end, with logging
