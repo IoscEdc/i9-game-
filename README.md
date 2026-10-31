@@ -34,32 +34,6 @@ Agentic-GameAI-i9/
 └── logs/                     # one .jsonl file per run
 ```
 
-## Setup
-
-```bash
-python -m venv venv
-venv\Scripts\activate          # Windows
-# source venv/bin/activate     # Mac/Linux
-pip install -r requirements.txt
-```
-
-Create a `.env` file with your free LLM provider settings:
-
-```text
-LLM_API_KEY=your_key_here
-LLM_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai/
-LLM_MODEL=gemini-2.5-flash
-```
-
-## Run
-
-From the project root:
-
-```bash
-python -m tiers.tier0_frozenlake
-```
-
-Each run saves every step (prompt, reply, action, reward) to a file in `logs/`.
 
 ## Tier 0 — Sanity check (week 1, prove the loop works)
 
