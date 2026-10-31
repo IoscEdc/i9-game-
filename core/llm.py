@@ -25,4 +25,3 @@ def ask_llm(prompt):
             print(f"  LLM error (try {attempt}/3): {e}")
             time.sleep(10 * attempt)  # wait longer each time
     return ""
-

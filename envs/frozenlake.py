@@ -30,4 +30,3 @@ class FrozenLakeEnv:
                 row.append("P" if (r, c) == (player_row, player_col) else tile)
             lines.append(" ".join(row))
         return "\n".join(lines)
-
