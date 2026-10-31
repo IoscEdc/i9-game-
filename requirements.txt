@@ -1,3 +1,4 @@
 gymnasium
 openai
 python-dotenv
+pygame
