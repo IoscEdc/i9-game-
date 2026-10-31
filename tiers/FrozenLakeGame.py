@@ -23,15 +23,15 @@ def build_prompt(env, history):
     recent = "\n".join(history[-5:]) if history else "None yet"
     return f"""{RULES}
 
-Current grid:
-{env.state_to_text()}
+        Current grid:
+        {env.state_to_text()}
 
-You are at row {row}, column {col}.
-Your recent moves:
-{recent}
+        You are at row {row}, column {col}.
+        Your recent moves:
+        {recent}
 
-Think briefly, then finish with exactly one line in this format:
-ACTION: LEFT   (or RIGHT, UP, DOWN)"""
+        Think briefly, then finish with exactly one line in this format:
+        ACTION: LEFT   (or RIGHT, UP, DOWN)"""
 
 
 def parse_action(text):
