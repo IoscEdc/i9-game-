@@ -2,38 +2,6 @@
 
 An LLM agent that learns to play games of increasing difficulty. Each tier adds one new hard problem: perception, planning, timing, memory, and opponents. The shared code in `core/` stays the same across tiers.
 
-## Project Structure
-
-```text
-Agentic-GameAI-i9/
-├── .env
-├── .gitignore
-├── requirements.txt
-├── README.md
-│
-├── core/                     # code shared by every tier
-│   ├── __init__.py
-│   ├── llm.py
-│   └── logger.py
-│
-├── envs/                     # one file per game
-│   ├── __init__.py
-│   ├── frozenlake.py         (Tier 0)
-│   ├── game2048.py           (Tier 1)
-│   ├── sokoban.py            (Tier 2)
-│   ├── atari.py              (Tier 3)
-│   └── pokemon.py            (Tier 4)
-│
-├── tiers/                    # one runnable script per tier
-│   ├── __init__.py
-│   ├── tier0_frozenlake.py
-│   ├── tier1_2048.py
-│   └── ...
-│
-├── memory/                   # Tier 4 only: notes, database
-└── logs/                     # one .jsonl file per run
-```
-
 
 ## Tier 0 — Sanity check (week 1, prove the loop works)
 
