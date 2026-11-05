@@ -48,3 +48,16 @@ An LLM agent that learns to play games of increasing difficulty. Each tier adds 
 
 - Multiple agents interacting/competing changes the problem entirely — now you need opponent modelling, not just environment modelling
 - Good as a "phase 2" side track once the core single-agent framework is solid, since it reuses most of your Tier 1-2 framework
+
+---
+
+## 🛠️ Implementation Details
+
+- **`tier0.py`**: A baseline script that sets up a 4x4 `FrozenLake-v1` game via Gymnasium, serializes the board state into a text prompt and queries a Google Gemini Flash model to choose valid actions (`0 = Left, 1 = Down, 2 = Right, 3 = Up`). It includes clean error handling and step-by-step logging.
+
+- **`requirements.txt`**: Lists the essential project dependencies:
+  * `gymnasium` (Reinforcement learning environments)
+  * `python-dotenv` (Secure local environment variable handling)
+  * `google-genai` (Official Google GenAI SDK)
+
+- **`.gitignore`**: Keeps local junk out of version control, cleanly ignoring your secret `.env` file, virtual environments (`venv/`), Python bytecode caches and editor configurations.
