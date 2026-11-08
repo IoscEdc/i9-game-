@@ -2,3 +2,4 @@ gymnasium
 openai
 python-dotenv
 pygame
+gym-sokoban

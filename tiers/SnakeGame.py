@@ -10,7 +10,7 @@ from envs.snake import SnakeEnv
 
 NUM_EPISODES = 2
 MAX_STEPS = 40
-PAUSE_SECONDS = 4      
+PAUSE_SECONDS = 0.5  
 END_PAUSE = 3          
 USE_HINTS = True       
 MOVES = ["UP", "DOWN", "LEFT", "RIGHT"]

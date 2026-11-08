@@ -11,7 +11,7 @@ from envs.frozenlake import FrozenLakeEnv
 
 NUM_EPISODES = 3
 MAX_STEPS = 20
-PAUSE_SECONDS = 4     
+PAUSE_SECONDS = 0.5 
 END_PAUSE = 3          
 
 BACKGROUND = (0, 0, 0)
