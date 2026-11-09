@@ -66,17 +66,18 @@ Agentic-GameAI-i9/
 - Introduces timing — the agent has to act fast enough, and pixel-based state means someone builds a perception layer (screen → structured description or direct pixel/RAM parsing)
 - Skills tested: latency-aware agent loops, vision-based state extraction, possibly a hybrid where a fast heuristic layer handles reflexes and the LLM handles higher-level strategy
 
-## Tier 4 — Long-horizon memory across an extended playthrough
+## Tier 4 — Multi-agent / competitive (optional branch, not strictly "harder" but different)
+
+**Game: Battlesnake or generals.io**
+
+- Multiple agents interacting/competing changes the problem entirely — now you need opponent modelling, not just environment modelling
+- Good as a "phase 2" side track once the core single-agent framework is solid, since it reuses most of your Tier 1-2 framework
+
+
+## Tier 5 — Long-horizon memory across an extended playthrough
 
 **Game: Pokémon via PyBoy (the "Claude Plays Pokémon" style setup)**
 
 - This is a big step up: hours-long playthroughs, need persistent memory (where have I been, what's my current goal, what did I learn), and the state space is huge
 - This is genuinely your RAG/retrieval background becoming directly useful — storing and retrieving "memories" of past game state/decisions
 - Skills tested: long-term memory architecture, goal decomposition, context window management over long sessions
-
-## Tier 5 — Multi-agent / competitive (optional branch, not strictly "harder" but different)
-
-**Game: Battlesnake or generals.io**
-
-- Multiple agents interacting/competing changes the problem entirely — now you need opponent modelling, not just environment modelling
-- Good as a "phase 2" side track once the core single-agent framework is solid, since it reuses most of your Tier 1-2 framework
