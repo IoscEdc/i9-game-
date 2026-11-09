@@ -3,3 +3,4 @@ openai
 python-dotenv
 pygame
 gym-sokoban
+gymnasium[atari]
