@@ -4,12 +4,10 @@ DIRS = {"UP": (-1, 0), "DOWN": (1, 0), "LEFT": (0, -1), "RIGHT": (0, 1)}
 
 
 class ArenaEnv:
-    """Several snakes on one big board. They all move at the same time."""
-
-    def __init__(self, size=32, num_food=40, dead_to_food=True, seed=None):
+    def __init__(self, size=20, num_food=25, dead_to_food=True, seed=None):
         self.size = size
         self.num_food = num_food
-        self.dead_to_food = dead_to_food     
+        self.dead_to_food = dead_to_food
         self.rng = random.Random(seed)
 
     def reset(self):
@@ -20,7 +18,7 @@ class ArenaEnv:
         self.snakes, self.facing = [], []
         for (r, c), name in starts:
             dr, dc = DIRS[name]
-            self.snakes.append([(r - k * dr, c - k * dc) for k in range(3)])  # head first
+            self.snakes.append([(r - k * dr, c - k * dc) for k in range(3)])
             self.facing.append(name)
         self.alive = [True] * self.n
         self.death = [""] * self.n
@@ -47,7 +45,6 @@ class ArenaEnv:
         return sum(self.alive) <= 1
 
     def step(self, moves):
-        """moves = {snake number: "UP"/"DOWN"/"LEFT"/"RIGHT"} for every living snake."""
         self.steps += 1
         alive = [i for i in range(self.n) if self.alive[i]]
 
@@ -88,8 +85,24 @@ class ArenaEnv:
                 self.snakes[i].pop()
         self._refill_food()
 
+    def look(self, i, move):
+        dr, dc = DIRS[move]
+        head = self.snakes[i][0]
+        cell = (head[0] + dr, head[1] + dc)
+        if not self.inside(cell):
+            return "WALL"
+        if cell in self.occupied() - {self.snakes[i][-1]}:
+            return "BODY"
+        return "FOOD" if cell in self.food else "SAFE"
+
+    def nearest_food(self, i):
+        hr, hc = self.snakes[i][0]
+        if not self.food:
+            return None
+        r, c = min(self.food, key=lambda f: abs(f[0] - hr) + abs(f[1] - hc))
+        return r - hr, c - hc
+
     def view(self, i, radius=5):
-        """A (2*radius+1) square window around the head of snake i."""
         hr, hc = self.snakes[i][0]
         lines = []
         for r in range(hr - radius, hr + radius + 1):

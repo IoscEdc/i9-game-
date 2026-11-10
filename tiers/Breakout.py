@@ -14,7 +14,7 @@ from envs.breakout import BreakoutEnv
 
 NUM_GAMES = 2
 MAX_STEPS = 30000       
-FPS = 60                
+FPS = 30                
 DRAW_EVERY = 1          
 LLM_EVERY = 2          
 USE_LLM = True          
