@@ -1,4 +1,4 @@
-# Agentic-GameAI-i9
+# Agentic-GameAI
 
 An LLM agent that plays games of increasing difficulty. Each tier adds one new hard problem: perception, planning, timing, memory, and opponents. The shared code in `core/` is reused by every tier.
 
